@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extraction Results</title>
+</head>
+<body>
+    <h1>Extraction Results for {{ browser }}</h1>
+    <table border="1">
+        <tr>
+            <th>URL</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        {% for url, username, password in credentials %}
+        <tr>
+            <td>{{ url }}</td>
+            <td>{{ username }}</td>
+            <td>{{ password }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Go Back</a>
+</body>
+</html>

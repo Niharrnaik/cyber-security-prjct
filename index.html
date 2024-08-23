@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Decryptor</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Password Decryptor</h1>
+    <form method="post" action="{{ url_for('get_creds') }}">
+        <label for="browser">Select Browser:</label>
+        <select id="browser" name="browser">
+            <option value="chrome">Chrome</option>
+            <option value="edge">Edge</option>
+            <option value="opera">Opera</option>
+        </select>
+        <button type="submit">Get Credentials</button>
+    </form>
+    {% if creds %}
+        <h2>Decrypted {{ browser }} Credentials</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for url, username, password in creds %}
+                    <tr>
+                        <td>{{ url }}</td>
+                        <td>{{ username }}</td>
+                        <td>{{ password }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
